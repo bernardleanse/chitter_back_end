@@ -1,7 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+const commitPeep = require('./commitPeep');
+// const { prisma } = require('.prisma/client');
+const { PrismaClient } = require('@prisma/client')
 const app = express();
 const port = 3001;
+
+prisma = new PrismaClient
 
 app.use(express.json());
 app.use(cors());
@@ -15,5 +20,13 @@ app.listen(port, () => {
 });
 
 app.post('/peeps', (req, res) => {
+  commitPeep(req.body.content)
+    .catch(e => {
+      throw(e)
+    })
+    .finally(async () => {
+      await prisma.$disconnect()
+    })
+
   res.send("/peeps post generic response")
 })
