@@ -7,5 +7,5 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://bernardleanse@localhost:5432/new_chitter"
+  url      = env("DATABASE_URL")
 }
