@@ -2,7 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const commitPeep = require('./commitPeep');
 // const { prisma } = require('.prisma/client');
-const { PrismaClient } = require('@prisma/client')
+const { PrismaClient } = require('@prisma/client');
+const getAllPeeps = require('./getAllPeeps');
 const app = express();
 const port = 3001;
 
@@ -29,4 +30,9 @@ app.post('/peeps', (req, res) => {
     })
 
   res.send("/peeps post generic response")
+})
+
+app.get('/peeps', (req, res) => {
+  getAllPeeps()
+  .then(peeps => res.send(JSON.stringify(peeps)))
 })
