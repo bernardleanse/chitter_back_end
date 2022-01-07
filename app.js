@@ -4,11 +4,14 @@ const commitPeep = require('./commitPeep');
 // const { prisma } = require('.prisma/client');
 const { PrismaClient } = require('@prisma/client');
 const getAllPeeps = require('./getAllPeeps');
+const morgan = require('morgan');
 const app = express();
 const port = 3001;
 
+
 prisma = new PrismaClient
 
+app.use(morgan('tiny'));
 app.use(express.json());
 app.use(cors());
 
