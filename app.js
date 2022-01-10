@@ -5,8 +5,10 @@ const commitPeep = require('./commitPeep');
 const { PrismaClient } = require('@prisma/client');
 const getAllPeeps = require('./getAllPeeps');
 const morgan = require('morgan');
+const deletePeep = require('./deletePeep');
 const app = express();
 const port = 3001;
+
 
 
 prisma = new PrismaClient
@@ -33,6 +35,18 @@ app.post('/peeps', (req, res) => {
     })
 
   res.send("/peeps post generic response")
+})
+
+app.delete('/peep/:id', (req, res) => {
+  console.log(`trying to delete peep id=${req.params.id}`)
+  deletePeep(req.params.id)
+  .catch(e => {
+    throw(e)
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
+
 })
 
 app.get('/peeps', (req, res) => {
