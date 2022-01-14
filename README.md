@@ -6,3 +6,4 @@ This is to reinforce and learn how to set up a CRUD app with dedicated front and
 
 Run migrations
 ```npx prisma migrate dev --name init```
+

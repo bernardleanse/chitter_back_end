@@ -8,7 +8,7 @@ const morgan = require('morgan');
 const deletePeep = require('./deletePeep');
 const editPeep = require('./editPeep');
 const app = express();
-const port = 3001;
+const port = 3001
 
 
 
@@ -34,11 +34,13 @@ app.post('/peeps', (req, res) => {
     })
     .finally(async () => {
       await prisma.$disconnect()
-      res.sendStatus(200)
+      setTimeout(() => {res.sendStatus(200)}, 1500)
+      })
+      
     })
 
   
-})
+
 
 app.delete('/peep/:id', (req, res) => {
   
