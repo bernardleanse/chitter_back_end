@@ -34,9 +34,10 @@ app.post('/peeps', (req, res) => {
     })
     .finally(async () => {
       await prisma.$disconnect()
+      res.sendStatus(200)
     })
 
-  res.send("/peeps post generic response")
+  
 })
 
 app.delete('/peep/:id', (req, res) => {
