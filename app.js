@@ -71,6 +71,9 @@ app.patch('/peep', (req, res) => {
 })
 
 app.get('/peeps', (req, res) => {
+  
   getAllPeeps()
-  .then(peeps => res.send(JSON.stringify(peeps)))
+  .then(peeps => {
+    res.send(JSON.stringify(peeps, null, 4))
+  })
 })
