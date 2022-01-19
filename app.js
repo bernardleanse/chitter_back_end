@@ -39,8 +39,9 @@ app.post('/peeps', (req, res) => {
       
     })
 
-  
-
+app.post('/signup', (req, res) => {
+  console.log(req.body)
+})
 
 app.delete('/peep/:id', (req, res) => {
   
