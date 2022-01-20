@@ -28,7 +28,7 @@ app.listen(port, () => {
 });
 
 app.post('/peeps', (req, res) => {
-  commitPeep(req.body.content)
+  commitPeep(req.body)
     .catch(e => {
       throw(e)
     })

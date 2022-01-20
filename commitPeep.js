@@ -2,14 +2,13 @@ const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient
 
-const commitPeep = async (content) => {
+const commitPeep = async (peep) => {
   await prisma.peep.create({
     data: {
-      content: content
+      content: peep.content,
+      authorId: peep.authorId
     }
   })
 };
-
-
 
 module.exports = commitPeep
