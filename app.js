@@ -7,11 +7,9 @@ const getAllPeeps = require('./getAllPeeps');
 const morgan = require('morgan');
 const deletePeep = require('./deletePeep');
 const editPeep = require('./editPeep');
+const signUp = require('./signUp');
 const app = express();
 const port = 3001
-
-
-
 
 prisma = new PrismaClient
 
@@ -40,7 +38,7 @@ app.post('/peeps', (req, res) => {
     })
 
 app.post('/signup', (req, res) => {
-  console.log(req.body)
+  const signUpSuccessful = signUp(req.body)
 })
 
 app.delete('/peep/:id', (req, res) => {
