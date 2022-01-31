@@ -38,6 +38,7 @@ app.post('/peeps', (req, res) => {
     })
 
 app.post('/signup', (req, res) => {
+  console.log(req.body)
   const signUpSuccessful = signUp(req.body)
 })
 
