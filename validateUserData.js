@@ -1,12 +1,12 @@
 const { PrismaClient } = require("@prisma/client")
+const Validator = require("./Validator")
 const prisma = new PrismaClient()
+const validator = new Validator
 
-const isUsernameUnique = (username) => {
-  
-}
 
 const validateUserData = (data) => {
-  const validUsername = isUsernameUnique(data.username)
+  const validUsername = validator.isUsernameUnique(data.username)
+  console.log(validUsername)
 }
 
 module.exports = validateUserData
