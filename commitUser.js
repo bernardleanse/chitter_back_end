@@ -13,9 +13,9 @@ const commitUser = (err, hash, username) => {
   .catch((e) => {
     throw(e)
   })
-  .finally(async () => {
+  .finally(async (e) => {
     await prisma.$disconnect()
-    console.log('disconnected')
+    console.log(e)
   })
 }
 

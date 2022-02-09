@@ -39,7 +39,12 @@ app.post('/peeps', (req, res) => {
 
 app.post('/signup', (req, res) => {
   console.log(req.body)
-  const signUpSuccessful = signUp(req.body)
+  try {
+    signUp(req.body)
+    res.sendStatus(200)
+  } catch(e) {
+    res.sendStatus(401)
+  } 
 })
 
 app.delete('/peep/:id', (req, res) => {
