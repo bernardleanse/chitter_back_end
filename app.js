@@ -32,19 +32,21 @@ app.post('/peeps', (req, res) => {
     })
     .finally(async () => {
       await prisma.$disconnect()
-      setTimeout(() => {res.sendStatus(200)}, 1500)
+      setTimeout(() => {res.sendStatus(200)}, 600)
       })
       
     })
 
 app.post('/signup', (req, res) => {
-  console.log(req.body)
-  try {
-    signUp(req.body)
-    res.sendStatus(200)
-  } catch(e) {
-    res.sendStatus(401)
-  } 
+  setTimeout(() => {
+    console.log(req.body)
+    try {
+      signUp(req.body)
+      res.sendStatus(200)
+    } catch(e) {
+      res.sendStatus(401)
+    } 
+  }, 600)
 })
 
 app.delete('/peep/:id', (req, res) => {
