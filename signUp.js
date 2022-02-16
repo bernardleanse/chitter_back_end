@@ -1,14 +1,13 @@
 const bcrypt = require('bcrypt')
 const commitUser = require('./commitUser')
+const Validator = require('./Validator')
+const validator = new Validator
 
-
-const signUp = (userData) => {
+const signUp = async (userData) => {
   const saltRounds = 6
-
-  bcrypt.hash(userData.password, saltRounds, (err, hash) => {
-    commitUser(err, hash, userData.username)
-  }) 
-
+    const hash = bcrypt.hash(userData.password, saltRounds, (err, hash) => {
+      commitUser(err, hash, userData.username)
+    })
 }
 
 module.exports = signUp

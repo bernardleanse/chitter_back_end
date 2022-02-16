@@ -4,19 +4,14 @@ const prisma = new PrismaClient
 
 class Validator {
   constructor(){}
-  async isUsernameUnique(username){
+  findUniqueUser(username){
     let isValid;
-    const user = await prisma.user.findUnique({
+    const userPromise = prisma.user.findUnique({
       where: {
         username: username
       }
     })
-
-    if(user){
-      return false
-    }
-    
-    return true
+    return userPromise
   }
 } 
 

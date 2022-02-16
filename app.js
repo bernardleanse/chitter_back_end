@@ -8,6 +8,7 @@ const morgan = require('morgan');
 const deletePeep = require('./deletePeep');
 const editPeep = require('./editPeep');
 const signUp = require('./signUp');
+const Validator = require('./Validator');
 const app = express();
 const port = 3001
 
@@ -38,14 +39,16 @@ app.post('/peeps', (req, res) => {
     })
 
 app.post('/signup', (req, res) => {
+  const v = new Validator
   setTimeout(() => {
-    console.log(req.body)
-    try {
-      signUp(req.body)
-      res.sendStatus(200)
-    } catch(e) {
-      res.sendStatus(401)
-    } 
+    v.findUniqueUser(req.body.username)
+    .then(user => {
+      if(user){
+        res.sendStatus(401)
+      } else {
+        res.sendStatus(200)
+      }
+    })
   }, 600)
 })
 
