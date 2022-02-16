@@ -46,6 +46,7 @@ app.post('/signup', (req, res) => {
       if(user){
         res.sendStatus(401)
       } else {
+        signUp(req.body)
         res.sendStatus(200)
       }
     })
